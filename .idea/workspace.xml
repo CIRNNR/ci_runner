@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7ec8fd6-270b-4df4-9315-b8c05585a1dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin" beforeDir="false" afterPath="$PROJECT_DIR$/bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ci.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/text.txt" beforeDir="false" />
     </list>
@@ -39,7 +41,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="gitignore" value="8" />
+          <entry key="gitignore" value="13" />
           <entry key="go" value="2784" />
           <entry key="md" value="83" />
           <entry key="txt" value="11" />
@@ -50,7 +52,7 @@
         <counts>
           <entry key="Go" value="2784" />
           <entry key="Markdown" value="43" />
-          <entry key="PLAIN_TEXT" value="59" />
+          <entry key="PLAIN_TEXT" value="64" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -73,16 +75,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="26">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Readme.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="104">
@@ -153,7 +155,7 @@
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.11/libexec" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bin" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -167,9 +169,9 @@
         <option value="$PROJECT_DIR$/bin/6e179f4ebe7267331df3aa28ecc5f5a2f2ecfd0c/ci.yaml" />
         <option value="$PROJECT_DIR$/src/runner/config.go" />
         <option value="$PROJECT_DIR$/src/runner/runner.go" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/licence.md" />
         <option value="$PROJECT_DIR$/Readme.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -463,13 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/licence.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -505,6 +500,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
         </state>
       </provider>
     </entry>
