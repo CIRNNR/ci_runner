@@ -5,6 +5,7 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/mount"
+	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
 	"golang.org/x/net/context"
 	"io"
@@ -13,7 +14,7 @@ import (
 	"time"
 )
 
-func Run( commit string) {
+func Run(commit string) {
 	config := loadConfig(commit)
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.WithVersion("1.38"))
@@ -21,6 +22,20 @@ func Run( commit string) {
 		panic(err)
 	}
 	pullImage(*cli, ctx, config.Image)
+
+	// Create a network
+
+	_, err = cli.NetworkCreate(ctx, "net"+commit, types.NetworkCreate{})
+	if err != nil {
+		panic(err)
+	}
+	// Pull services docker images
+	for _, service := range config.Services {
+		pullImage(*cli, ctx, service)
+		serviceContainer := createContainer(*cli, ctx, service, commit)
+		startContainer(serviceContainer, ctx, *cli)
+	}
+
 	createdContainer := createContainer(*cli, ctx, config.Image, commit)
 	startContainer(createdContainer, ctx, *cli)
 	for _, cmd := range config.Steps {
@@ -40,7 +55,7 @@ func pullImage(cli client.Client, ctx context.Context, containerName string) {
 	io.Copy(os.Stdout, reader)
 }
 
-func createContainer(cli client.Client, ctx context.Context, containerName string,commit string) (container.ContainerCreateCreatedBody) {
+func createContainer(cli client.Client, ctx context.Context, containerName string, commit string) container.ContainerCreateCreatedBody {
 
 	currentDir, err := os.Getwd()
 	if err != nil {
@@ -48,8 +63,8 @@ func createContainer(cli client.Client, ctx context.Context, containerName strin
 	}
 	workingDir := currentDir + "/" + commit
 	createdContainer, err := cli.ContainerCreate(ctx, &container.Config{
-		Image: containerName,
-		Tty:   true,
+		Image:      containerName,
+		Tty:        true,
 		WorkingDir: "/app",
 	}, &container.HostConfig{
 		Mounts: []mount.Mount{
@@ -59,7 +74,13 @@ func createContainer(cli client.Client, ctx context.Context, containerName strin
 				Target: "/app",
 			},
 		},
-	}, nil, "")
+	}, &network.NetworkingConfig{
+		EndpointsConfig: map[string]*network.EndpointSettings{
+			"bridge": {
+				NetworkID: "net" + commit,
+			},
+		},
+	}, containerName)
 	if err != nil {
 		panic(err)
 	}
