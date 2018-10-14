@@ -6,21 +6,22 @@ import (
 )
 
 type ConfigStruct struct {
-	Image string
-	Steps []struct {
-		Name string
+	Image    string
+	Services []string
+	Steps    []struct {
+		Name    string
 		Command string
 	}
 }
 
-func loadConfig(directory string) ConfigStruct  {
+func loadConfig(directory string) ConfigStruct {
 	config := new(ConfigStruct)
-	data,err := ioutil.ReadFile("./" + directory + "/ci.yaml")
-	if err != nil{
+	data, err := ioutil.ReadFile("./" + directory + "/ci.yaml")
+	if err != nil {
 		panic(err)
 	}
 	err = yaml.Unmarshal(data, config)
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 	return *config
